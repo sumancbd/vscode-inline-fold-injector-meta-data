@@ -14,7 +14,8 @@ export class Decorator {
   Active: boolean = true;
   StartLine: number = 0;
   EndLine: number = 0;
-
+  DisabledIfNoName: boolean;
+  
   /**
   * To set/update the current working text editor.
   * It's neccessary to call this method when the active editor changes
@@ -64,6 +65,7 @@ export class Decorator {
     this.MaskDecoration = maskDecorationOptions(extConfs);
     this.NoDecorations = noDecoration();
     this.ParsedRegexString = this.parseRegexString(extConfs.get(Configs.regex), extConfs.get(Configs.regexGroup) || 1);
+    this.DisabledIfNoName = extConfs.get(Configs.disabledIfNoName);
   }
 
 
@@ -86,6 +88,11 @@ export class Decorator {
         console.error("The regex was wrong");
         break;
       }
+
+      const nameRegex= /name:([a-zA-Z0-9]+)/;
+      const nameMatches = nameRegex.exec(match[regexGroup+1]);
+      const name: string | undefined = nameMatches?.[1];
+
       const foldIndex = match[1].length;
       const foldEndIndex = match[1 + regexGroup].length;
 
@@ -96,7 +103,7 @@ export class Decorator {
       const range = new Range(startFoldPosition, endFoldPosition);
 
       /* Checking if the toggle command is active or not. If it is not active, it will remove all decorations. */
-      if (!this.Active) {
+      if (!this.Active || (this.DisabledIfNoName && !name)) {
         this.CurrentEditor.setDecorations(this.NoDecorations, []);
         break;
       }
@@ -109,16 +116,20 @@ export class Decorator {
       /* Pushing the range and the hoverMessage to the decorators array to apply later. */
       decorators.push({
         range,
-        hoverMessage: `Full text **${match[regexGroup + 1]}**`
+        hoverMessage: `Full text **${match[regexGroup + 1]}**`,
+        renderOptions: {
+          before: {
+            contentText: name,
+          }
+        }
       });
     }
 
-    this.CurrentEditor.setDecorations(this.UnfoldedDecoration, decorators);
+    this.CurrentEditor.setDecorations(this.UnfoldedDecoration, decorators.map(({range,  hoverMessage}) => ({range, hoverMessage})));
 
     let decorationsToFold = decorators
-      .map(({ range }) => range)
-      .filter((r) => !r.contains(this.CurrentEditor.selection) && !this.CurrentEditor.selection.contains(r))
-      .filter((r) => !this.CurrentEditor.selections.find((s) => r.contains(s)))
+      .filter(({range}) => !range.contains(this.CurrentEditor.selection) && !this.CurrentEditor.selection.contains(range))
+      .filter(({range}) => !this.CurrentEditor.selections.find((s) => range.contains(s)))
 
     const shouldFoldOnLineSelect = this.WorkspaceConfigs.get(Configs.unfoldOnLineSelect) as boolean
     if (shouldFoldOnLineSelect){
@@ -126,8 +137,8 @@ export class Decorator {
         return range.start.line <= targetRange.start.line && range.end.line >= targetRange.start.line
       }
       decorationsToFold = decorationsToFold
-        .filter((r) => !isInTheLineRange(this.CurrentEditor.selection , r))
-        .filter((r) => !this.CurrentEditor.selections.find((s) => isInTheLineRange(s , r)))
+        .filter(({range}) => !isInTheLineRange(this.CurrentEditor.selection , range))
+        .filter(({range}) => !this.CurrentEditor.selections.find((s) => isInTheLineRange(s , range)))
     }
 
     this.CurrentEditor.setDecorations(

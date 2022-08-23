@@ -11,5 +11,6 @@ export enum Configs {
    unfoldedOpacity = "unfoldedOpacity",
    after = "after",
    supportedLanguages = "supportedLanguages",
-   unfoldOnLineSelect = "unfoldOnLineSelect"
+   unfoldOnLineSelect = "unfoldOnLineSelect",
+   disabledIfNoName = "disabledIfNoName"
 }

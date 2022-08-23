@@ -140,6 +140,12 @@
 					"order": 8,
 					"description": "(Optional) unfold the line when any part of the line is selected",
 					"default": false
+				},
+				"inlineFold.disabledIfNoName": {
+					"type": "boolean",
+					"order": 9,
+					"description": "Disable folding if the matched group has no name",
+					"default": false
 				}
 			},
 			"required": [
