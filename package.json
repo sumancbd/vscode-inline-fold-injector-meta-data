@@ -57,11 +57,12 @@
 					"type": "string",
 					"order": 1,
 					"description": "Regex to match",
-					"default": "(class|className)=[`'{\"]([^`'\"}]+)[`'\"}]",
+					"default": "(/\\*\\* @injector-id: )([a-zA-Z0-9-\\s])* \\*/",
 					"examples": [
 						"(class|className)=[`'{\"]([^`'\"}]+)[`'\"}]",
 						"class=\"([a-zA-Z0-9-\\s]+)(?=\")",
-						"id=\"([a-zA-Z0-9-\\s]+)(?=\")"
+						"id=\"([a-zA-Z0-9-\\s]+)(?=\")",
+						"(/\\*\\* @injector-id: )([a-zA-Z0-9-\\s])* \\*/"
 					]
 				},
 				"inlineFold.regexFlags": {
@@ -165,8 +166,8 @@
 		"watch": "tsc -watch -p ./"
 	},
 	"devDependencies": {
-		"@types/vscode": "1.68.1",
 		"@types/node": "^17.0.33",
+		"@types/vscode": "1.68.1",
 		"typescript": "4.7.4"
 	},
 	"__metadata": {
@@ -178,5 +179,8 @@
 		"updated": true,
 		"preRelease": false,
 		"installedTimestamp": 1657117103571
+	},
+	"dependencies": {
+		"vsce": "^2.15.0"
 	}
 }

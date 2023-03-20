@@ -89,18 +89,21 @@ export class Decorator {
         break;
       }
 
-      const nameRegex= /name:([a-zA-Z0-9]+)/;
-      const nameMatches = nameRegex.exec(match[regexGroup+1]);
+      const nameRegex= /name:([a-zA-Z0-9-]+)/;
+      const nameMatches = nameRegex.exec(match[regexGroup+1]);    
       const name: string | undefined = nameMatches?.[1];
+      
 
-      const foldIndex = match[1].length;
-      const foldEndIndex = match[1 + regexGroup].length;
+      const foldEndIndex = match[0].length - 2;
+      const foldIndex = 3;
 
       // match.index is the start of the entire match
-      const startFoldPosition = this.startPositionLine([match.index, foldIndex])
-      const endFoldPosition = this.endPositionLine([match.index, foldIndex + foldEndIndex])
+      const startFoldPosition = this.startPositionLine([match.index, foldIndex]);
+      const endFoldPosition = this.endPositionLine([match.index, foldEndIndex]);
+
       /* Creating a new range object from the calculated positions. */
       const range = new Range(startFoldPosition, endFoldPosition);
+      
 
       /* Checking if the toggle command is active or not. If it is not active, it will remove all decorations. */
       if (!this.Active || (this.DisabledIfNoName && !name)) {
@@ -116,7 +119,7 @@ export class Decorator {
       /* Pushing the range and the hoverMessage to the decorators array to apply later. */
       decorators.push({
         range,
-        hoverMessage: `Full text **${match[regexGroup + 1]}**`,
+        hoverMessage: `Full text ${match[0]}`,
         renderOptions: {
           before: {
             contentText: name,
