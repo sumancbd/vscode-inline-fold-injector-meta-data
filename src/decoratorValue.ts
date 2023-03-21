@@ -2,7 +2,7 @@ import { DecorationOptions, Position, Range, Selection, TextEditor, TextEditorDe
 import { maskDecorationOptions, noDecoration, unfoldedDecorationOptions } from "./decoration";
 import { Configs } from "./enums";
 
-export class Decorator {
+export class DecoratorValue {
   WorkspaceConfigs: WorkspaceConfiguration;
   UnfoldedDecoration: TextEditorDecorationType;
   MaskDecoration: TextEditorDecorationType;
@@ -62,9 +62,9 @@ export class Decorator {
     this.WorkspaceConfigs = extConfs;
     this.SupportedLanguages = extConfs.get(Configs.supportedLanguages) || [];
     this.UnfoldedDecoration = unfoldedDecorationOptions(extConfs);
-    this.MaskDecoration = maskDecorationOptions(extConfs, Configs.maskChar, Configs.maskColor);
+    this.MaskDecoration = maskDecorationOptions(extConfs, Configs.maskCharValue, Configs.maskColorValue);
     this.NoDecorations = noDecoration();
-    this.ParsedRegexString = this.parseRegexString(extConfs.get(Configs.regex), extConfs.get(Configs.regexGroup) || 1);
+    this.ParsedRegexString = this.parseRegexString(extConfs.get(Configs.regexValue), extConfs.get(Configs.regexGroup) || 1);
     this.DisabledIfNoName = extConfs.get(Configs.disabledIfNoName);
   }
 

@@ -16,10 +16,10 @@ export const unfoldedDecorationOptions = (extConfs: WorkspaceConfiguration): Tex
  * @param extConfs Workspace configs
  * @returns TextEditorDecorationType with custom modifications
  */
-export const maskDecorationOptions = (extConfs: WorkspaceConfiguration): TextEditorDecorationType => window.createTextEditorDecorationType({
+export const maskDecorationOptions = (extConfs: WorkspaceConfiguration, maskChar: string, maskColor: string): TextEditorDecorationType => window.createTextEditorDecorationType({
   before: {
-    contentText: extConfs.get(Configs.maskChar),
-    color: extConfs.get(Configs.maskColor)
+    contentText: extConfs.get(maskChar),
+    color: extConfs.get(maskColor)
   },
   after: {
     contentText: extConfs.get(Configs.after),

@@ -26,7 +26,7 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "inlineFold.toggle",
+				"command": "inlineInjectorIdFold.toggle",
 				"title": "Toggle inline fold"
 			}
 		],
@@ -34,7 +34,7 @@
 			"type": "object",
 			"title": "Inline fold settings",
 			"properties": {
-				"inlineFold.supportedLanguages": {
+				"inlineInjectorIdFold.supportedLanguages": {
 					"type": "array",
 					"order": 0,
 					"description": "Supported languages",
@@ -44,16 +44,16 @@
 					},
 					"minItems": 1,
 					"default": [
-						"html",
-						"svelte",
-						"vue",
 						"javascript",
 						"typescript",
 						"javascriptreact",
-						"typescriptreact"
+						"typescriptreact",
+						"markdown",
+						"prisma",
+						"php"
 					]
 				},
-				"inlineFold.regex": {
+				"inlineInjectorIdFold.regex": {
 					"type": "string",
 					"order": 1,
 					"description": "Regex to match",
@@ -65,7 +65,19 @@
 						"(/\\*\\* @injector-id: )([a-zA-Z0-9-\\s])* \\*/"
 					]
 				},
-				"inlineFold.regexFlags": {
+				"inlineInjectorIdFold.regexValue": {
+					"type": "string",
+					"order": 1,
+					"description": "Regex to match",
+					"default": "(/\\*\\* @injector-start:|/\\*\\* @injector-stop: )([a-zA-Z0-9-\\s])* \\*/",
+					"examples": [
+						"(class|className)=[`'{\"]([^`'\"}]+)[`'\"}]",
+						"class=\"([a-zA-Z0-9-\\s]+)(?=\")",
+						"id=\"([a-zA-Z0-9-\\s]+)(?=\")",
+						"(/\\*\\* @injector-start: )([a-zA-Z0-9-\\s])* \\*/"
+					]
+				},
+				"inlineInjectorIdFold.regexFlags": {
 					"type": "string",
 					"order": 2,
 					"description": "Regex flags",
@@ -75,7 +87,7 @@
 						"gi"
 					]
 				},
-				"inlineFold.regexGroup": {
+				"inlineInjectorIdFold.regexGroup": {
 					"type": "string",
 					"order": 3,
 					"description": "Regex capturing group number that will be folded",
@@ -85,7 +97,7 @@
 						"2"
 					]
 				},
-				"inlineFold.maskChar": {
+				"inlineInjectorIdFold.maskChar": {
 					"type": "string",
 					"order": 4,
 					"description": "The mask that covers the folded text",
@@ -96,17 +108,40 @@
 						"⌨"
 					]
 				},
-				"inlineFold.maskColor": {
+				"inlineInjectorIdFold.maskCharValue": {
+					"type": "string",
+					"order": 4,
+					"description": "The mask that covers the folded text",
+					"default": "◦◦◦",
+					"examples": [
+						"◦◦◦",
+						"▶▶▶",
+						"⌨"
+					]
+				},
+				"inlineInjectorIdFold.maskColor": {
+					"type": "string",
+					"order": 5,
+					"description": "The color of the covering mask in hex",
+					"default": "#d0d768",
+					"examples": [
+						"#68D7AC",
+						"#FF0000",
+						"#d0d768"
+					]
+				},
+				"inlineInjectorIdFold.maskColorValue": {
 					"type": "string",
 					"order": 5,
 					"description": "The color of the covering mask in hex",
 					"default": "#68D7AC",
 					"examples": [
 						"#68D7AC",
-						"#FF0000"
+						"#FF0000",
+						"#d0d768"
 					]
 				},
-				"inlineFold.unfoldedOpacity": {
+				"inlineInjectorIdFold.unfoldedOpacity": {
 					"type": "number",
 					"order": 6,
 					"description": "The opacity of the unfolded text (from 0 to 1)",
@@ -125,7 +160,7 @@
 						1
 					]
 				},
-				"inlineFold.after": {
+				"inlineInjectorIdFold.after": {
 					"type": "string",
 					"order": 7,
 					"description": "(Optional) Add any text/character to be appended to the folded text",
@@ -136,13 +171,13 @@
 						"<<"
 					]
 				},
-				"inlineFold.unfoldOnLineSelect": {
+				"inlineInjectorIdFold.unfoldOnLineSelect": {
 					"type": "boolean",
 					"order": 8,
 					"description": "(Optional) unfold the line when any part of the line is selected",
 					"default": false
 				},
-				"inlineFold.disabledIfNoName": {
+				"inlineInjectorIdFold.disabledIfNoName": {
 					"type": "boolean",
 					"order": 9,
 					"description": "Disable folding if the matched group has no name",
@@ -150,11 +185,11 @@
 				}
 			},
 			"required": [
-				"inlineFold.regex",
-				"inlineFold.regexFlags",
-				"inlineFold.regexGroup",
-				"inlineFold.maskChar",
-				"inlineFold.supportedLanguages"
+				"inlineInjectorIdFold.regex",
+				"inlineInjectorIdFold.regexFlags",
+				"inlineInjectorIdFold.regexGroup",
+				"inlineInjectorIdFold.maskChar",
+				"inlineInjectorIdFold.supportedLanguages"
 			]
 		}
 	},
