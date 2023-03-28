@@ -1,16 +1,16 @@
 {
-	"name": "inline-fold",
-	"displayName": "Inline fold",
+	"name": "codebuddy-inline-fold-injector-metadata",
+	"displayName": "Codebuddy Inline Fold Injector Metadata",
 	"description": "A custom decorator that \"fold\" matching content in single line",
 	"icon": "res/icon.png",
-	"version": "0.1.7",
-	"publisher": "moalamri",
-	"homepage": "https://github.com/moalamri/vscode-inline-fold",
-	"bugs": "https://github.com/moalamri/vscode-inline-fold/issues",
+	"version": "1.0.0",
+	"publisher": "CodebuddyPvdLtd",
+	"homepage": "https://github.com/sumancbd/vscode-inline-fold-injector-meta-data",
+	"bugs": "https://github.com/sumancbd/vscode-inline-fold-injector-meta-data/issues",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/moalamri/vscode-inline-fold"
+		"url": "https://github.com/sumancbd/vscode-inline-fold-injector-meta-data"
 	},
 	"engines": {
 		"vscode": "^1.68.1"
@@ -204,18 +204,5 @@
 		"@types/node": "^17.0.33",
 		"@types/vscode": "1.68.1",
 		"typescript": "4.7.4"
-	},
-	"__metadata": {
-		"id": "4dc4b505-dda3-4ac6-b839-397f8cf0adcc",
-		"publisherDisplayName": "Mohammed Alamri",
-		"publisherId": "41376028-10e6-4784-aff4-9c6be1c5c66e",
-		"isPreReleaseVersion": false,
-		"targetPlatform": "undefined",
-		"updated": true,
-		"preRelease": false,
-		"installedTimestamp": 1657117103571
-	},
-	"dependencies": {
-		"vsce": "^2.15.0"
 	}
 }

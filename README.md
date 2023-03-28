@@ -1,14 +1,14 @@
 <p align="center">
-    <img width="128" alt="preview" src="https://user-images.githubusercontent.com/964077/179586355-6d90c66a-6812-4ab7-9657-4596dd1b2a62.png">
+    <img width="128" alt="preview" style={{background-color: "#FFFFFF"}} src="https://codebuddy.co/assets/img/Logo.svg">
 </p>
 <br />
 
-## Inline Fold - VSCode Extension
+## Codebuddy Inline Fold Injector Metadata - VSCode Extension
 > ⚠️ NOTICE: this extension is still under active development! ⚠️
 
-## VS Code Inline Fold Extension
+## VS Code Codebuddy Inline Fold Injector Metadata Extension
 
-VS Code Inline Fold extension mimics VS Code's [folding](https://code.visualstudio.com/docs/editor/codebasics#_folding) experience for inline code.
+VS Code Codebuddy Inline Fold Injector Metadata extension mimics VS Code's [folding](https://code.visualstudio.com/docs/editor/codebasics#_folding) experience for inline code.
 This is especially useful when working with frameworks like Tailwind CSS which use lots of utility classes that often disfigure code visual structure. You can expand the folds by clicking on them. You can also configure the extension to target specific attributes in your markup.
 The characters used as a mask can be configured in the settings and you can update the regex expression to match any code pattern you want.
 The extension also enables folding of attribute values within HTML/JSX tags. It makes your code tidy and easier to navigate.
@@ -36,33 +36,35 @@ Regex Flags: gs
 
 ### Available Settings
 - `inlineInjectorIdFold.regex` regex to match the code line
+- `inlineInjectorIdFold.regexValue` regex to match the code line
 - `inlineInjectorIdFold.regexFlags` regex flags
 - `inlineInjectorIdFold.regexGroup` regex group that match the code that should be folded
 - `inlineInjectorIdFold.unfoldedOpacity` opacity of the unfolded code when it's clicked or is selected
 - `inlineInjectorIdFold.maskChar` text/character to mask the code when it is folded
 - `inlineInjectorIdFold.maskColor` color of the mask character(s)
+- `inlineInjectorIdFold.maskCharValue` text/character to mask the code when it is folded
+- `inlineInjectorIdFold.maskColorValue` color of the mask character(s)
 - `inlineInjectorIdFold.after` an optional text/character that will be appended to the end of folded code
 - `inlineInjectorIdFold.supportedLanguages` a list of targeted language Ids
 - `inlineInjectorIdFold.unfoldOnLineSelect` unfold the line when any part of the line is selected
 
 
 ### Running the extension
-You can install the extension <a href="https://marketplace.visualstudio.com/items?itemName=moalamri.inline-fold"> in the marketplace here</a>. If you encounter any issue or would like to contribute, <a href="https://github.com/moalamri/vscode-inline-fold">visit the GitHub page</a>.
+You can install the extension <a href="https://marketplace.visualstudio.com/items?itemName=CodebuddyPvdLtd.codebuddy-inline-fold-injector-metadata"> in the marketplace here</a>. If you encounter any issue or would like to contribute, <a href="https://github.com/sumancbd/vscode-inline-fold-injector-meta-data">visit the GitHub page</a>.
 
 ### Notes
 * Use settings UI to configure the extension (better for regex escaping).
 * If the extension doesn't work, then check for your language id, you can add it from the settings under `inlineInjectorIdFold.supportedLanguages` using the specific language Id.
-* You can set a keyboard shortcut to toggle the folding on and off. Search for "Inline Fold" in the commands panel, then click the gear icon and set the desired keybinding.
+* You can set a keyboard shortcut to toggle the folding on and off. Search for "Codebuddy Inline Fold Injector Metadata" in the commands panel, then click the gear icon and set the desired keybinding.
 
 Current default language Ids (see [here](https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers) for more):
-- `vue`
-- `html`
-- `svelte`
-- `vue-html`
 - `javascript`
 - `typescript`
 - `javascriptreact`
 - `typescriptreact`
+- `markdown`
+- `prisma`
+- `php`
 
 
 ### Known Issues
