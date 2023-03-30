@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="128" alt="preview" style={{background-color: "#FFFFFF"}} src="https://codebuddy.co/assets/img/Logo.svg">
+    <img width="128" alt="preview" style={{background-color: "#FFFFFF"}} src="res/icon.png">
 </p>
 <br />
 
