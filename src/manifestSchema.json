@@ -9,10 +9,7 @@
     	"frameworkName": {"type": "string"},
     	"frameworkVersions": {
 			"description": "", 
-			"type": "array",
-			"items": {
-				"type": "string"
-			}
+			"$ref": "http://localhost:3000/test/enum-data.json"
 		},
     	"version": {"type": "string"},
     	"dependencies": {
