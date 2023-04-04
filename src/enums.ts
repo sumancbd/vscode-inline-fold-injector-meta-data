@@ -1,6 +1,7 @@
 export enum Commands {
    inlineInjectorIdFoldToggle = "inlineInjectorIdFold.toggle",
-   injectorIdInsert = "injectorId.wrap",
+   injectorIdWrap = "injectorId.wrap",
+   injectorIdInsert = "injectorId.insert",
 }
 export enum Configs {
    identifier = "inlineInjectorIdFold",

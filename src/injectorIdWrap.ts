@@ -2,6 +2,15 @@ import { Position, window } from "vscode";
 import { InjectorIdType } from "./types";
 
 export const runInjectorIdWrapCommand = async (injectorIds: InjectorIdType[]) => {
+  const activeTextEditor = window.activeTextEditor;
+  const selectePosition = activeTextEditor.selections;
+
+  if (selectePosition[0].start.character === selectePosition[0].end.character 
+    && selectePosition[0].start.line === selectePosition[0].end.line) {
+      await window.showErrorMessage('Please select text to wrap with injector id.', 'Cancel');
+      return;
+  }
+
   const selectedId = await window.showQuickPick(injectorIds);
 
   if (selectedId === undefined) return;
@@ -18,13 +27,11 @@ export const runInjectorIdWrapCommand = async (injectorIds: InjectorIdType[]) =>
     if (searchQuery === undefined) return;
   }
 
-  const activeTextEditor = window.activeTextEditor;
   const injectorId =
     injectorIdPart.length === 2
       ? `${injectorIdPart[0]}-${searchQuery}`
       : selectedId?.injectorId;
-
-  const selectePosition = activeTextEditor.selections;
+  
   const prefixText = `/** @injector-start: ${injectorId} */`;
   const safixText = `/** @injector-stop: ${injectorId} */`;
 

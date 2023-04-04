@@ -6,6 +6,7 @@ import { EventsLimit } from "./utils";
 import axios from "axios";
 import { InjectorIdType } from "./types";
 import { runInjectorIdWrapCommand } from "./injectorIdWrap";
+import { runInjectorIdInsertCommand } from "./injectorIdInsert";
 
 const loadDataFromApi = async () => {
    const res = await axios.get<{result: Array<InjectorIdType>}>('http://localhost:3000/test/injector-id');
@@ -42,8 +43,13 @@ export async function activate(context: ExtensionContext) {
    }, null);
    
    // Command register for injector id wrap.
-   commands.registerCommand(Commands.injectorIdInsert, async () => {
+   commands.registerCommand(Commands.injectorIdWrap, async () => {
       runInjectorIdWrapCommand(injectorIds);
+   }, null);
+
+   // Command register for insert injector id.
+   commands.registerCommand(Commands.injectorIdInsert, async () => {
+      runInjectorIdInsertCommand(injectorIds);
    }, null);
 
    window.onDidChangeActiveTextEditor((e) => {
