@@ -1,0 +1,109 @@
+{
+  // Place your snippets for typescriptreact here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  // Example:
+  "React Native Paper Component": {
+    "prefix": "rnpc",
+    "body": [
+      "import { StyleSheet, View } from 'react-native';",
+      "import React from 'react';",
+      "import { Text, useTheme } from 'react-native-paper';",
+      "",
+      "const ${TM_FILENAME/(.*)\\..+$/$1/}:React.FC = () => {",
+      "const theme = useTheme();",
+      "const styles = React.useMemo(() => createStyles(theme), [theme]);",
+      "",
+      "return (",
+      "<View>",
+      "<Text>${TM_FILENAME/(.*)\\..+$/$1/}</Text>",
+      "</View>",
+      ");",
+      "}",
+      "",
+      "export default ${TM_FILENAME/(.*)\\..+$/$1/};",
+      "",
+      "const createStyles = (theme: ReactNativePaper.Theme) => StyleSheet.create({});"
+    ],
+    "description": "React Native Paper Component"
+  },
+  "React Native Navigation Theme Component": {
+    "prefix": "rnntc",
+    "body": [
+      "import { StyleSheet, View } from 'react-native';",
+      "import React from 'react';",
+      "import { useTheme } from '@react-navigation/native';",
+      "import type { ExtendedTheme } from '@types';",
+      "\n",
+      "interface ${TM_FILENAME/(.*)\\..+$/$1/}Props {",
+      "children: React.ReactNode;",
+      "}",
+      "\n",
+      "const ${TM_FILENAME/(.*)\\..+$/$1/}: React.FC<${TM_FILENAME/(.*)\\..+$/$1/}Props> = ({ children }) => {",
+      "\tconst theme = useTheme();",
+      "\tconst styles = React.useMemo(() => createStyles(theme), [theme]);",
+      "\n",
+      "\treturn (",
+      "\t<View>",
+      "\t<Text style={styles.text}>${TM_FILENAME/(.*)\\..+$/$1/}</Text>",
+      "\t{children}",
+      "\t</View>",
+      "\t);",
+      "};",
+      "\n",
+      "export default ${TM_FILENAME/(.*)\\..+$/$1/};",
+      "\n",
+      "const createStyles = (theme: ExtendedTheme) =>",
+      "\tStyleSheet.create({",
+      "});"
+    ]
+  },
+  "React Typescript Functional Component": {
+    "prefix": "rtfc",
+    "description": "React Functional Component with Typescript",
+    "body": [
+      "import React from 'react'\n",
+      "export interface ${TM_FILENAME/(.*)\\..+$/$1/}Props {",
+      "\tchildren: React.ReactNode",
+      "}\n",
+      "const ${TM_FILENAME/(.*)\\..+$/$1/}: React.FC<${TM_FILENAME/(.*)\\..+$/$1/}Props> = ({children}) => {",
+      "\treturn (",
+      "\t\t<div>{children}</div>",
+      "\t)",
+      "}\n",
+      "export default ${TM_FILENAME/(.*)\\..+$/$1/}"
+    ]
+  },
+  "NextJS Typescript Page Component with Layout": {
+    "prefix": "nxtpl",
+    "description": "NextJS Typescript Page with Layout",
+    "body": [
+      "import React from 'react';",
+      "import type { NextPageWithLayout } from '@types';",
+      "import Head from 'next/head';",
+      "import AppLayout from '@components/layouts/AppLayout';\n",
+
+      "const ${1}Page: NextPageWithLayout = () => {",
+      "\treturn (",
+      "\t\t<main>",
+      "\t\t\t<Head>",
+      "\t\t\t<title>${1}</title>",
+      "\t\t\t</Head>",
+      "\t\t</main>",
+      "\t);",
+      "};\n",
+
+      "${1}Page.getLayout = (page: React.ReactElement) => {",
+      "\treturn <AppLayout>{page}</AppLayout>;",
+      "};\n",
+
+      "export default ${1}Page;"
+    ]
+  },
+  "React useEffect log": {
+    "prefix": "rel",
+    "description": "React useEffect Log",
+    "body": ["React.useEffect(() => console.log(\"$0\", $0), [$0])"]
+  }
+}

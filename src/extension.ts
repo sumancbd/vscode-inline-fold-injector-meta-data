@@ -18,9 +18,7 @@ const loadDataFromApi = async () => {
 }
 
 export async function activate(context: ExtensionContext) {
-
    const injectorIds = await loadDataFromApi();
-
    const config: WorkspaceConfiguration = workspace.getConfiguration(Configs.identifier);
    const decorator = new Decorator();
    const decoratorValue = new DecoratorValue();
