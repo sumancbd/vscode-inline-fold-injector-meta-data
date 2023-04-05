@@ -1,5 +1,5 @@
 import { Position, window } from "vscode";
-import { InjectorIdType } from "./types";
+import { InjectorIdType } from "../core/types";
 
 export const runInjectorIdInsertCommand = async (injectorIds: InjectorIdType[]) => {
   const selectedId = await window.showQuickPick(injectorIds);
