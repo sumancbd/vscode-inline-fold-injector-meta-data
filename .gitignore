@@ -3,3 +3,5 @@ node_modules
 .pnpm-debug.log
 .pnpm-lock.yaml
 .vscode/settings.json
+inline-fold-*.vsix
+codebuddy-inline-fold-injector-metadata-*.vsix
