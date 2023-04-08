@@ -3,8 +3,23 @@ import { Decorator } from "./decorator";
 import { DecoratorValue } from "./decoratorValue";
 import { Commands, Configs } from "./enums";
 import { EventsLimit } from "./utils";
+import axios from "axios";
+import { InjectorIdType } from "./types";
+import { runInjectorIdWrapCommand } from "./injectorIdWrap";
 
-export function activate(context: ExtensionContext) {
+const loadDataFromApi = async () => {
+   const res = await axios.get<{result: Array<InjectorIdType>}>('http://localhost:3000/test/injector-id');
+   return res.data.result.map<InjectorIdType>(item => ({
+      label: item.title,
+      detail: item.injectorId,
+      ...item,
+   }))
+}
+
+export async function activate(context: ExtensionContext) {
+
+   const injectorIds = await loadDataFromApi();
+
    const config: WorkspaceConfiguration = workspace.getConfiguration(Configs.identifier);
    const decorator = new Decorator();
    const decoratorValue = new DecoratorValue();
@@ -24,6 +39,11 @@ export function activate(context: ExtensionContext) {
    commands.registerCommand(Commands.inlineInjectorIdFoldToggle, () => {
       decorator.toggle();
       decoratorValue.toggle();
+   }, null);
+   
+   // Command register for injector id wrap.
+   commands.registerCommand(Commands.injectorIdInsert, async () => {
+      runInjectorIdWrapCommand(injectorIds);
    }, null);
 
    window.onDidChangeActiveTextEditor((e) => {
