@@ -1,12 +1,12 @@
 import { commands, ExtensionContext, window, workspace, WorkspaceConfiguration } from "vscode";
-import { Decorator } from "./decorator";
-import { DecoratorValue } from "./decoratorValue";
-import { Commands, Configs } from "./enums";
-import { EventsLimit } from "./utils";
+import { Decorator } from "./inlineFold/decorator";
+import { DecoratorValue } from "./inlineFold/decoratorValue";
+import { Commands, Configs } from "./core/enums";
+import { EventsLimit } from "./core/utils";
 import axios from "axios";
-import { InjectorIdType } from "./types";
-import { runInjectorIdWrapCommand } from "./injectorIdWrap";
-import { runInjectorIdInsertCommand } from "./injectorIdInsert";
+import { InjectorIdType } from "./core/types";
+import { runInjectorIdWrapCommand } from "./WrapInjectorId";
+import { runInjectorIdInsertCommand } from "./InsertInjectorId";
 
 const loadDataFromApi = async () => {
    const res = await axios.get<{result: Array<InjectorIdType>}>('http://localhost:3000/test/injector-id');

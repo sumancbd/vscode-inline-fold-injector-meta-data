@@ -1,5 +1,5 @@
 import { Position, window } from "vscode";
-import { InjectorIdType } from "./types";
+import { InjectorIdType } from "../core/types";
 
 export const runInjectorIdWrapCommand = async (injectorIds: InjectorIdType[]) => {
   const activeTextEditor = window.activeTextEditor;

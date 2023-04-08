@@ -223,11 +223,11 @@
 		"snippets": [
 			{
 				"language": "typescript",
-				"path": "./src/typescript.json"
+				"path": "./snippets/typescript.json"
 			},
 			{
 				"language": "typescriptreact",
-				"path": "./src/typescriptreact.json"
+				"path": "./snippets/typescriptreact.json"
 			}
 		]
 	},
