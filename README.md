@@ -35,15 +35,15 @@ Regex Flags: gs
 </div>
 
 ### Available Settings
-- `inlineFold.regex` regex to match the code line
-- `inlineFold.regexFlags` regex flags
-- `inlineFold.regexGroup` regex group that match the code that should be folded
-- `inlineFold.unfoldedOpacity` opacity of the unfolded code when it's clicked or is selected
-- `inlineFold.maskChar` text/character to mask the code when it is folded
-- `inlineFold.maskColor` color of the mask character(s)
-- `inlineFold.after` an optional text/character that will be appended to the end of folded code
-- `inlineFold.supportedLanguages` a list of targeted language Ids
-- `inlineFold.unfoldOnLineSelect` unfold the line when any part of the line is selected
+- `inlineInjectorIdFold.regex` regex to match the code line
+- `inlineInjectorIdFold.regexFlags` regex flags
+- `inlineInjectorIdFold.regexGroup` regex group that match the code that should be folded
+- `inlineInjectorIdFold.unfoldedOpacity` opacity of the unfolded code when it's clicked or is selected
+- `inlineInjectorIdFold.maskChar` text/character to mask the code when it is folded
+- `inlineInjectorIdFold.maskColor` color of the mask character(s)
+- `inlineInjectorIdFold.after` an optional text/character that will be appended to the end of folded code
+- `inlineInjectorIdFold.supportedLanguages` a list of targeted language Ids
+- `inlineInjectorIdFold.unfoldOnLineSelect` unfold the line when any part of the line is selected
 
 
 ### Running the extension
@@ -51,7 +51,7 @@ You can install the extension <a href="https://marketplace.visualstudio.com/item
 
 ### Notes
 * Use settings UI to configure the extension (better for regex escaping).
-* If the extension doesn't work, then check for your language id, you can add it from the settings under `inlineFold.supportedLanguages` using the specific language Id.
+* If the extension doesn't work, then check for your language id, you can add it from the settings under `inlineInjectorIdFold.supportedLanguages` using the specific language Id.
 * You can set a keyboard shortcut to toggle the folding on and off. Search for "Inline Fold" in the commands panel, then click the gear icon and set the desired keybinding.
 
 Current default language Ids (see [here](https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers) for more):
