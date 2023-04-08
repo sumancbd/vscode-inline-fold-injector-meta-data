@@ -219,7 +219,17 @@
 					"group": "injectorId@2"
 				}
 			]
-		}
+		},
+		"snippets": [
+			{
+				"language": "typescript",
+				"path": "./src/typescript.json"
+			},
+			{
+				"language": "typescriptreact",
+				"path": "./src/typescriptreact.json"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "pnpm run compile",
